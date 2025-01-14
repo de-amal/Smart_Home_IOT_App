@@ -8,6 +8,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.0.0
+  flutter_svg: ^1.0.0
   cupertino_icons: ^1.0.8
   flutter_inappwebview: ^6.1.5 # For rendering the webview in the Internet screen.
   http: ^1.1.0
@@ -18,4 +20,6 @@ dev_dependencies:
   flutter_lints: ^5.0.0
 flutter:
   uses-material-design: true
+  assets:
+    - assets/images/
 

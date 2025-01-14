@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:projects/utils/constants.dart';
 
 class InternetScreen extends StatelessWidget {
   @override
@@ -10,7 +11,7 @@ class InternetScreen extends StatelessWidget {
       ),
       body: InAppWebView(
         initialUrlRequest: URLRequest(
-          url: WebUri("https://akhil8g.github.io/ai_insights_page/"),  // Use WebUri constructor here
+          url: WebUri(REACT_URL),  // Use WebUri constructor here
         ),
         onWebViewCreated: (InAppWebViewController controller) {
           // Use the controller to manage the WebView.
