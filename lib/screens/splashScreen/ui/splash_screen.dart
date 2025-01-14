@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:projects/screens/dashboard/dashboard_screen.dart';
+import 'package:projects/screens/loginPage/ui/login_page.dart';
 import 'package:projects/screens/splashScreen/ui/bloc/splash_event.dart';
 
 import 'bloc/splash_bloc.dart';
@@ -26,6 +27,9 @@ class SplashScreen extends StatelessWidget {
     }
     else if (state.status == SplashStatus.isLoggedIn){
       return DashboardScreen();
+    }
+    else if (state.status == SplashStatus.notLoggedIn){
+      return LoginPage();
     }
       return SizedBox(height: 10,);
   }
