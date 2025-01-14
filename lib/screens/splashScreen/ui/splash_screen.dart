@@ -40,8 +40,42 @@ class SplashScreen extends StatelessWidget {
         create: (context) => SplashBloc(),
       child: BlocBuilder<SplashBloc, SplashState>(
       builder: (context, state) {
-      return splashWidget(state,context);
+      return WillPopScope(
+          child: splashWidget(state,context),
+          onWillPop: () async {
+            // Show confirmation dialog
+            return _showExitDialog(context);
+          });
     },
     ));
   }
 }
+
+Future<bool> _showExitDialog(BuildContext context) async {
+  return await showDialog<bool>(
+    context: context,
+    barrierDismissible: false, // Prevent dismissing by tapping outside
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Exit App'),
+        content: Text('Are you sure you want to exit the app?'),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(false); // Do not close the app
+            },
+            child: Text('No'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(true); // Close the app
+            },
+            child: Text('Yes'),
+          ),
+        ],
+      );
+    },
+  ) ??
+      false; // Return false if the dialog was dismissed by tapping outside
+}
+

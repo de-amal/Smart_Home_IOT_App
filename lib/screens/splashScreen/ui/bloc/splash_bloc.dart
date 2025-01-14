@@ -8,7 +8,15 @@ class SplashBloc extends Bloc<SplashEvent,SplashState>{
 
     on<FetchData>((event,emit) async {
       await Future.delayed(Duration(seconds: 2));
-      emit(state.copyWith(status: SplashStatus.isLoggedIn ));
+      emit(state.copyWith(status: SplashStatus.notLoggedIn ));
+    });
+
+    on<SwitchToDashboard>((event,emit) {
+      emit(state.copyWith(status: SplashStatus.isLoggedIn));
+    });
+
+    on<SwitchToLogin>((event,emit) {
+      emit(state.copyWith(status: SplashStatus.notLoggedIn));
     });
 
   }
