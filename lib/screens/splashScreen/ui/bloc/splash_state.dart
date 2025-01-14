@@ -1,11 +1,21 @@
+enum SplashStatus { isLoading, isLoggedIn, notLoggedIn }
 
-enum SplashStatus{ isLoading, isLoggedIn, notLoggedIn}
+enum DisplayScreen { Welcome, Login, Signup }
 
-class SplashState{
+class SplashState {
   final SplashStatus status;
-  SplashState({this.status = SplashStatus.isLoading});
+  final DisplayScreen screen;
+  SplashState(
+      {this.status = SplashStatus.isLoading,
+      this.screen = DisplayScreen.Welcome,});
 
-  SplashState copyWith({SplashStatus? status}){
-    return SplashState( status: status ?? this.status);
+  SplashState copyWith(
+      {SplashStatus? status,
+      DisplayScreen? screen,
+      String? emailId,
+      String? password}) {
+    return SplashState(
+        status: status ?? this.status,
+        screen: screen ?? this.screen,);
   }
 }

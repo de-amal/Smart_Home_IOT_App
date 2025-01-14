@@ -29,7 +29,7 @@ class SplashScreen extends StatelessWidget {
       return DashboardScreen();
     }
     else if (state.status == SplashStatus.notLoggedIn){
-      return LoginPage();
+        return LoginPage(state.screen);
     }
       return SizedBox(height: 10,);
   }
